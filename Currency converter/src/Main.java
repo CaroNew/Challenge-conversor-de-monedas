@@ -1,8 +1,6 @@
 import api.conversor.models.CurrencyConversor;
 import api.conversor.utils.SearchCurrency;
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import api.conversor.utils.Calculator;
 
 import java.util.Scanner;
 
@@ -12,17 +10,14 @@ public class Main {
 
     public static void main(String[] args) {
         boolean stop = true;
-        //https://v6.exchangerate-api.com/v6/2b2163007b1c842b2f47d4b3/latest/USD
-        //Seteando la monedas
-        SearchCurrency currency = new SearchCurrency("GBP", "ARS");
-        //Haciendo la busqueda
-        CurrencyConversor search = currency.search();
-
-        System.out.println(search.toString());
-
+        String currency1 = "";
+        String currency2 = "";
+        float monto = 0;
 
         //7. menu de usuario
         Scanner keyboard = new Scanner(System.in);
+        SearchCurrency currency;
+        CurrencyConversor search;
 
         String msj = """
                 **************************************
@@ -39,41 +34,60 @@ public class Main {
                 5. Libra (UK) -> Peso (ARG)
                 6. Peso (ARG) -> Libra (UK)
                 7. Salir
-                ***************************************
-                
-                
-                
+                *************************************** 
                 """;
+        String msj2 = "Ingrese el monto a convertir: ";
 
         while (stop) {
             System.out.println(msj);
-            int opcion = keyboard.nextInt();
+            int option = keyboard.nextInt();
 
-            switch (opcion) {
+            switch (option) {
                 case 1:
-                    System.out.println("opcion 1");
+                    currency1 = "USD";
+                    currency2 = "ARS";
+                    System.out.println(msj2);
+                    monto = keyboard.nextFloat();
                     break;
                 case 2:
+
+                    currency1 = "ARS";
+                    currency2 = "USD";
                     System.out.println("opcion 2");
                     break;
                 case 3:
+                    currency1 = "USD";
+                    currency2 = "BRL";
                     System.out.println("opcion 3");
                     break;
                 case 4:
+                    currency1 = "BRL";
+                    currency2 = "USD";
                     System.out.println("opcion 4");
                     break;
                 case 5:
+                    currency1 = "GBP";
+                    currency2 = "ARS";
                     System.out.println("opcion 5");
                     break;
                 case 6:
+                    currency1 = "ARS";
+                    currency2 = "GBP";
                     System.out.println("opcion 6");
                     break;
                 case 7:
+                    currency1 = "ARS";
+                    currency2 = "USD";
                     stop = false;
                     System.out.println("Adiós!");
                     break;
-            }
 
+            }
+            currency = new SearchCurrency(currency1, currency2);
+            search = currency.search();
+            float result = new Calculator().currencyCalculator(monto, search.conversion_rate());
+            System.out.println("\nEl monto es: " + search.target_code() + " " + result + "\n");
         }
+
     }
 }
