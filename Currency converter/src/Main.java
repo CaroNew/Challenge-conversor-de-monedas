@@ -53,40 +53,46 @@ public class Main {
 
                     currency1 = "ARS";
                     currency2 = "USD";
-                    System.out.println("opcion 2");
+                    System.out.println(msj2);
+                    monto = keyboard.nextFloat();
                     break;
                 case 3:
                     currency1 = "USD";
                     currency2 = "BRL";
-                    System.out.println("opcion 3");
+                    System.out.println(msj2);
+                    monto = keyboard.nextFloat();
                     break;
                 case 4:
                     currency1 = "BRL";
                     currency2 = "USD";
-                    System.out.println("opcion 4");
+                    System.out.println(msj2);
+                    monto = keyboard.nextFloat();
                     break;
                 case 5:
                     currency1 = "GBP";
                     currency2 = "ARS";
-                    System.out.println("opcion 5");
+                    System.out.println(msj2);
+                    monto = keyboard.nextFloat();
                     break;
                 case 6:
                     currency1 = "ARS";
                     currency2 = "GBP";
-                    System.out.println("opcion 6");
+                    System.out.println(msj2);
+                    monto = keyboard.nextFloat();
                     break;
                 case 7:
-                    currency1 = "ARS";
-                    currency2 = "USD";
                     stop = false;
-                    System.out.println("Adiós!");
                     break;
 
             }
-            currency = new SearchCurrency(currency1, currency2);
-            search = currency.search();
-            float result = new Calculator().currencyCalculator(monto, search.conversion_rate());
-            System.out.println("\nEl monto es: " + search.target_code() + " " + result + "\n");
+
+            if (!currency1.isEmpty()){
+                currency = new SearchCurrency(currency1, currency2);
+                search = currency.search();
+                float result = new Calculator().currencyCalculator(monto, search.conversion_rate());
+                System.out.println("\nEl monto es: " + search.target_code() + " " + result + "\n");
+            }
+
         }
 
     }
