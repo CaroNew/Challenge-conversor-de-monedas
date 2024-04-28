@@ -9,9 +9,10 @@ public class ConversorMenu {
 
     String menuMsg = """
                 **************************************
-                ---------------------------------------
+                
+                -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
                 | Bienvenido al conversor de monedas! |
-                ---------------------------------------
+                -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
                 
                 Ingrese la opción deseada:
                 
@@ -22,7 +23,8 @@ public class ConversorMenu {
                 5. Libra (UK) -> Peso (ARG)
                 6. Peso (ARG) -> Libra (UK)
                 7. Salir
-                *************************************** 
+                
+                ***************************************
                 """;
     String amountMsg = "Ingrese el monto a convertir: ";
     public boolean printMenu () {
@@ -30,10 +32,9 @@ public class ConversorMenu {
         String option;
         boolean stop = true;
 
+
         System.out.println(menuMsg);
-
         option = keyboard.nextLine();
-
 
         switch (option) {
             case "1":
@@ -77,7 +78,7 @@ public class ConversorMenu {
                 System.out.println("Adiós!");
                 break;
             default:
-                System.out.println("Por favor, ingrese una opción válido\n");
+                System.out.println("Por favor, ingrese una opción válida\n");
         }
 
         return stop;

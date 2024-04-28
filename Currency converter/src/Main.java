@@ -28,8 +28,14 @@ public class Main {
             if (!currency1.isEmpty()){
                 currency = new SearchCurrency(currency1, currency2);
                 search = currency.search();
-                float result = new Calculator().currencyCalculator(menu.getMonto(), search.conversion_rate());
-                System.out.println("\nEl monto es: " + search.target_code() + " " + result + "\n");
+                monto = menu.getMonto();
+                if (monto < 0){
+                    System.out.println("Lo siento, no puedo covertir montos menores que cero\n");
+                }else {
+                    float result = new Calculator().currencyCalculator(monto, search.conversion_rate());
+                    System.out.println("\nEl monto es: " + search.target_code() + " " + result + "\n");
+                }
+
             }
 
         }
