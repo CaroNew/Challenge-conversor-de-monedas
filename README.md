@@ -6,3 +6,7 @@ Primer challenge de Alura latam para desarrollador back-end en java.
 
 Implementación de un conversor de monedas utilizando la API <a href="https://www.exchangerate-api.com/">Exchangerate-api</a>.
 
+
+## Menú
+
+<img src="/img/menuimg.png">
